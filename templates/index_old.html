@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Новый лендинг</title>
+</head>
+<body>
+
+<form action="{% url 'thanks_page' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Отправить</button>
+</form>
+
+{% if object_list %}
+{% for obj in object_list %}
+{{ obj.id }}
+{{ obj.order_dt }}
+{{ obj.order_name }}
+{{ obj.order_phone }}
+{% endfor %}
+{{ else }}
+Нет данных
+{% endif %}
+
+</body>
+</html>
